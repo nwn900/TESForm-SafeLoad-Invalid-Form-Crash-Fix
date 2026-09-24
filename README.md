@@ -112,6 +112,8 @@ runtime compatibility or crash prevention.
 
 ## Credits and references
 
+- CommonLibF4: collaborative reverse-engineered Fallout 4 library used to build
+  this plugin ([upstream repository](https://github.com/libxse/commonlibf4)).
 - F4SE: [official site](https://f4se.silverlock.org/)
 - Runtime and F4SE pair for the qualified target: Fallout 4 1.10.163 / F4SE
   0.6.23, as listed by the official F4SE site.
