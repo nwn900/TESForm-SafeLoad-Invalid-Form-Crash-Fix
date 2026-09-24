@@ -1,0 +1,40 @@
+#include <F4SE/F4SE.h>
+
+F4SE_EXPORT constinit F4SE::PluginVersionData F4SEPlugin_Version = []() noexcept {
+    F4SE::PluginVersionData v{};
+    v.PluginVersion({ ${COMMONLIB_PLUGIN_VERSION_MAJOR}, ${COMMONLIB_PLUGIN_VERSION_MINOR}, ${COMMONLIB_PLUGIN_VERSION_PATCH}, 0 });
+    v.PluginName("${COMMONLIB_PLUGIN_NAME}");
+    v.AuthorName("${COMMONLIB_PLUGIN_AUTHOR}");
+    // This plugin scans the loaded PC image and fails closed when its unique
+    // callsite contract is absent or ambiguous. Signature scanning lets an
+    // unlisted PC runtime reach that check instead of being pre-rejected by the
+    // loader; it does not make that runtime qualified or supported. See the
+    // repository compatibility notes for the evidence-backed support boundary.
+    v.UsesSigScanning(true);
+    // Engine pointers are treated as opaque values. The guard validates their
+    // pointed-to bytes without reading CommonLib object-layout fields.
+    v.IsLayoutDependent(false);
+    v.HasNoStructUse(true);
+    // This plugin has no Address Library dependency.
+#if defined(FALLOUTVR)
+    // The separate VR diagnostic artifact remains inactive: this callsite and
+    // its vtable-image contract have not been mapped for Fallout 4 VR.
+    v.CompatibleVersions({ REL::Version{ 1, 2, 72, 0 } });
+#else
+    // These are loader metadata entries, not a mod compatibility promise.
+    // This prerelease qualifies only Fallout 4 1.10.163.0 / F4SE 0.6.23.0;
+    // other game runtimes remain unqualified even if scanning finds a match.
+    v.CompatibleVersions({
+        REL::Version{ 1, 10, 163, 0 },
+        REL::Version{ 1, 10, 980, 0 },
+        REL::Version{ 1, 10, 984, 0 },
+        REL::Version{ 1, 11, 137, 0 },
+        REL::Version{ 1, 11, 159, 0 },
+        REL::Version{ 1, 11, 169, 0 },
+        REL::Version{ 1, 11, 191, 0 },
+        REL::Version{ 1, 11, 221, 0 },
+        REL::Version{ 1, 11, 240, 0 }
+    });
+#endif
+    return v;
+}();

@@ -1,0 +1,11 @@
+/build/
+/.xmake/
+/release/
+*.obj
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.user
+*.suo
+*.log
