@@ -5,7 +5,7 @@ specific save-loading crash path: an invalid or stale `TESForm` pointer being
 used for a virtual `GetFormEditorID()` call while Fallout 4 handles a
 form-type-mismatch warning.
 
-> **Release status:** 0.1.0 is an experimental prerelease. The plugin was
+> **Release status:** 0.1.0 is an experimental release. The plugin was
 > observed installing its exact-signature hook on Fallout 4 1.10.163.0 and
 > logged two intercepted invalid editor-ID dispatches (`UNREADABLE_VTABLE`)
 > on 2026-09-22. Those entries show the guard substituted its placeholder;
