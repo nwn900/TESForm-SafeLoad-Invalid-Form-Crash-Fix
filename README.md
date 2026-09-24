@@ -110,11 +110,6 @@ The DLL is emitted under `build\plugins`. The released binary is distributed
 in the GitHub release asset; building from source does not by itself validate
 runtime compatibility or crash prevention.
 
-## Nexus Mods description
-
-The English description in paste-ready Nexus Mods BBCode is maintained in
-[`NEXUS_DESCRIPTION_BBCODE.txt`](NEXUS_DESCRIPTION_BBCODE.txt).
-
 ## Credits and references
 
 - F4SE: [official site](https://f4se.silverlock.org/)
